@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/konrad.barrek/Projects/c-sharp-10-fundamentals/09/demos/start/BethanysPieShopHRM/BethanysPieShopHRM/BethanysPieShopHRM.csproj",
+      "projectUniqueName": "/Users/konrad.barrek/Projects/learning_c#/BethanysPieShopHRM/BethanysPieShopHRM.csproj",
       "projectName": "BethanysPieShopHRM",
-      "projectPath": "/Users/konrad.barrek/Projects/c-sharp-10-fundamentals/09/demos/start/BethanysPieShopHRM/BethanysPieShopHRM/BethanysPieShopHRM.csproj",
+      "projectPath": "/Users/konrad.barrek/Projects/learning_c#/BethanysPieShopHRM/BethanysPieShopHRM.csproj",
       "packagesPath": "/Users/konrad.barrek/.nuget/packages/",
-      "outputPath": "/Users/konrad.barrek/Projects/c-sharp-10-fundamentals/09/demos/start/BethanysPieShopHRM/BethanysPieShopHRM/obj/",
+      "outputPath": "/Users/konrad.barrek/Projects/learning_c#/BethanysPieShopHRM/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/konrad.barrek/.nuget/NuGet/NuGet.Config"
