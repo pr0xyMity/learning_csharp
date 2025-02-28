@@ -1,12 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "vUVXNLGdMF4=",
+  "dgSpecHash": "wj1gjRMBIv4=",
   "success": true,
   "projectFilePath": "/Users/konrad.barrek/Projects/learning_c#/BethanysPieShopHRM/BethanysPieShopHRM.csproj",
-  "expectedPackageFiles": [
-    "/Users/konrad.barrek/.nuget/packages/microsoft.netcore.app.ref/8.0.12/microsoft.netcore.app.ref.8.0.12.nupkg.sha512",
-    "/Users/konrad.barrek/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.12/microsoft.aspnetcore.app.ref.8.0.12.nupkg.sha512",
-    "/Users/konrad.barrek/.nuget/packages/microsoft.netcore.app.host.osx-arm64/8.0.12/microsoft.netcore.app.host.osx-arm64.8.0.12.nupkg.sha512"
-  ],
+  "expectedPackageFiles": [],
   "logs": []
 }
