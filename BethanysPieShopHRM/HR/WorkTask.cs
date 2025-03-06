@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace BethanysPieShopHRM.HR
 {
-	struct WorkTask
-	{
-		public string description;
-		public int hours;
+    internal struct WorkTask
+    {
+        public string description;
+        public int hours;
 
-		public void PerformWorkTask()
-		{
-			Console.WriteLine($"Task {description} of {hours} hour(s) has been performed.");
-		}
-	}
+        public void PerformWorkTask()
+        {
+            Console.WriteLine($"Task {description} of {hours} hour(s) has been performed.");
+        }
+    }
 }
