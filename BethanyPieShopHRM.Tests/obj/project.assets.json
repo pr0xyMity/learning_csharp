@@ -411,6 +411,19 @@
         "build": {
           "build/net6.0/xunit.runner.visualstudio.props": {}
         }
+      },
+      "BethanysPieShopHRM/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.1"
+        },
+        "compile": {
+          "bin/placeholder/BethanysPieShopHRM.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BethanysPieShopHRM.dll": {}
+        }
       }
     }
   },
@@ -932,10 +945,16 @@
         "xunit.runner.visualstudio.2.8.2.nupkg.sha512",
         "xunit.runner.visualstudio.nuspec"
       ]
+    },
+    "BethanysPieShopHRM/1.0.0": {
+      "type": "project",
+      "path": "../BethanysPieShopHRM/BethanysPieShopHRM.csproj",
+      "msbuildProject": "../BethanysPieShopHRM/BethanysPieShopHRM.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net9.0": [
+      "BethanysPieShopHRM >= 1.0.0",
       "Microsoft.NET.Test.Sdk >= 17.12.0",
       "coverlet.collector >= 6.0.2",
       "xunit >= 2.9.2",
@@ -966,7 +985,11 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "/Users/konrad.barrek/Projects/learning_c#/BethanysPieShopHRM/BethanysPieShopHRM.csproj": {
+              "projectPath": "/Users/konrad.barrek/Projects/learning_c#/BethanysPieShopHRM/BethanysPieShopHRM.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
