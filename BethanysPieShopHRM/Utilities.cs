@@ -5,7 +5,7 @@ namespace BethanysPieShopHRM
 {
     internal class Utilities
     {
-        private static string directory = @"D:\data\BethanysPieShopHRM\";
+        private static string directory = @"/Users/konrad.barrek/Documents/c_test";
         private static string fileName = "employees.txt";
 
         internal static void RegisterEmployee(List<Employee> employees)
@@ -37,7 +37,7 @@ namespace BethanysPieShopHRM
             DateTime birthDay = DateTime.Parse(Console.ReadLine());//ex. 2/16/2008
 
             Console.Write("Enter the hourly rate: ");
-            string hourlyRate = Console.ReadLine();
+            string? hourlyRate = Console.ReadLine();
             double rate = double.Parse(hourlyRate);//we will assume here that input is in the correct format
 
             Employee employee = null;

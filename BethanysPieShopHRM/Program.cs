@@ -10,7 +10,7 @@ Console.WriteLine("* Bethany's Pie Shop Employee App *");
 Console.WriteLine("***********************************");
 Console.ForegroundColor = ConsoleColor.White;
 
-string userSelection;
+string? userSelection;
 Console.ForegroundColor = ConsoleColor.Blue;
 
 Utilities.CheckForExistingEmployeeFile();
