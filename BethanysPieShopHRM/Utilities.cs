@@ -5,7 +5,7 @@ namespace BethanysPieShopHRM
 {
     internal class Utilities
     {
-        private static string directory = @"/Users/konrad.barrek/Documents/c_test";
+        private static string directory = @"/Users/konrad.barrek/Documents/c_test/";
         private static string fileName = "employees.txt";
 
         internal static void RegisterEmployee(List<Employee> employees)
