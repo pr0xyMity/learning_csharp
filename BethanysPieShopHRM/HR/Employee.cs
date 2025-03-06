@@ -1,5 +1,4 @@
-﻿using BethanysPieShopHRM.Logic;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace BethanysPieShopHRM.HR
 {
@@ -186,15 +185,15 @@ namespace BethanysPieShopHRM.HR
             return Wage;
         }
 
-        public double CalculateWage()
-        {
-            WageCalculations wageCalculations = new WageCalculations();
-
-            double calculateValue = wageCalculations.ComplexWageCalculation(Wage, taxRate, 3, 42);
-
-            return calculateValue;
-
-        }
+        // public double CalculateWage()
+        // {
+        //     WageCalculations wageCalculations = new WageCalculations();
+        //
+        //     double calculateValue = wageCalculations.ComplexWageCalculation(Wage, taxRate, 3, 42);
+        //
+        //     return calculateValue;
+        //
+        // }
 
         public string ConvertToJson()
         {

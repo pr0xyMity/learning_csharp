@@ -1,0 +1,6 @@
+/Users/konrad.barrek/Projects/learning_c#/BethanysPieShopHRM/obj/Debug/net6.0/BethanysPieShopHRM.csproj.AssemblyReference.cache
+/Users/konrad.barrek/Projects/learning_c#/BethanysPieShopHRM/obj/Debug/net6.0/BethanysPieShopHRM.GeneratedMSBuildEditorConfig.editorconfig
+/Users/konrad.barrek/Projects/learning_c#/BethanysPieShopHRM/obj/Debug/net6.0/BethanysPieShopHRM.AssemblyInfoInputs.cache
+/Users/konrad.barrek/Projects/learning_c#/BethanysPieShopHRM/obj/Debug/net6.0/BethanysPieShopHRM.AssemblyInfo.cs
+/Users/konrad.barrek/Projects/learning_c#/BethanysPieShopHRM/obj/Debug/net6.0/BethanysPieShopHRM.csproj.CoreCompileInputs.cache
+/Users/konrad.barrek/Projects/learning_c#/BethanysPieShopHRM/obj/Debug/net6.0/BethanysPieShopHRM.sourcelink.json
