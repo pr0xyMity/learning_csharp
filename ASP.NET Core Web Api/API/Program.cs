@@ -1,8 +1,13 @@
+using API.Domains.Books.Controller;
+using API.Domains.Books.Data.DataSources;
+using API.Domains.Books.Data.Repositories;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+builder.Services.AddControllers();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
@@ -18,17 +23,15 @@ app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 
-// app.UseCors(b =>
-// {
-//     b.WithOrigins("http://localhost:5094");
-//     b.AllowAnyHeader();
-//     b.AllowAnyMethod();
-// });
-
 var summaries = new[]
 {
     "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
 };
+var bookDatasource = new BooksDataSource();
+var bookRepository = new BooksRepository(bookDatasource);
+var bookController = new BooksController(bookRepository);
+
+app.MapControllers();
 
 app.MapGet("/weatherforecast", () =>
     {

@@ -7,29 +7,29 @@ namespace API.Domains.Books.Data.Repositories;
 public class BooksRepository : IBooksRepository
 {
 
-    BooksRepository(IBooksDatasource booksDatasource)
+    public BooksRepository(IBooksDatasource booksDatasource)
     {
        _booksDatasource = booksDatasource; 
     }
     
     IBooksDatasource  _booksDatasource;
     
-    public void addBook(Book book)
+    public Task addBook(Book book)
     {
         throw new NotImplementedException();
     }
 
-    public void removeBook(Book book)
+    public Task removeBook(Book book)
     {
         throw new NotImplementedException();
     }
 
-    public void getBookById(string bookId)
+    public async Task<Book?> getBookById(string bookId)
     {
-        throw new NotImplementedException();
+        return await _booksDatasource.getBook(bookId);
     }
 
-    public void getBooks()
+    public Task<List<Book?>> getBooks()
     {
         throw new NotImplementedException();
     }
