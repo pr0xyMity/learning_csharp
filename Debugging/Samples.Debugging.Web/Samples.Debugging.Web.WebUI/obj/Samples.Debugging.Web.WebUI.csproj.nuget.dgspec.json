@@ -1,32 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "C:\\dev\\c-sharp-debugging\\02\\code\\before\\Samples.Debugging.Web\\Samples.Debugging.Web.WebUI\\Samples.Debugging.Web.WebUI.csproj": {}
+    "/Users/konrad.barrek/Projects/learning_c#/Debugging/Samples.Debugging.Web/Samples.Debugging.Web.WebUI/Samples.Debugging.Web.WebUI.csproj": {}
   },
   "projects": {
-    "C:\\dev\\c-sharp-debugging\\02\\code\\before\\Samples.Debugging.Web\\Samples.Debugging.Web.WebUI\\Samples.Debugging.Web.WebUI.csproj": {
+    "/Users/konrad.barrek/Projects/learning_c#/Debugging/Samples.Debugging.Web/Samples.Debugging.Web.WebUI/Samples.Debugging.Web.WebUI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\dev\\c-sharp-debugging\\02\\code\\before\\Samples.Debugging.Web\\Samples.Debugging.Web.WebUI\\Samples.Debugging.Web.WebUI.csproj",
+        "projectUniqueName": "/Users/konrad.barrek/Projects/learning_c#/Debugging/Samples.Debugging.Web/Samples.Debugging.Web.WebUI/Samples.Debugging.Web.WebUI.csproj",
         "projectName": "Samples.Debugging.Web.WebUI",
-        "projectPath": "C:\\dev\\c-sharp-debugging\\02\\code\\before\\Samples.Debugging.Web\\Samples.Debugging.Web.WebUI\\Samples.Debugging.Web.WebUI.csproj",
-        "packagesPath": "C:\\Users\\morse\\.nuget\\packages\\",
-        "outputPath": "C:\\dev\\c-sharp-debugging\\02\\code\\before\\Samples.Debugging.Web\\Samples.Debugging.Web.WebUI\\obj\\",
+        "projectPath": "/Users/konrad.barrek/Projects/learning_c#/Debugging/Samples.Debugging.Web/Samples.Debugging.Web.WebUI/Samples.Debugging.Web.WebUI.csproj",
+        "packagesPath": "/Users/konrad.barrek/.nuget/packages/",
+        "outputPath": "/Users/konrad.barrek/Projects/learning_c#/Debugging/Samples.Debugging.Web/Samples.Debugging.Web.WebUI/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\morse\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/konrad.barrek/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "net8.0"
+          "net9.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net8.0": {
-            "targetAlias": "net8.0",
+          "net9.0": {
+            "targetAlias": "net9.0",
             "projectReferences": {}
           }
         },
@@ -34,11 +32,17 @@
           "warnAsError": [
             "NU1605"
           ]
-        }
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
-        "net8.0": {
-          "targetAlias": "net8.0",
+        "net9.0": {
+          "targetAlias": "net9.0",
           "dependencies": {
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
@@ -80,7 +84,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.102/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
