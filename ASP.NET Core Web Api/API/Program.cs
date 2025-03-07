@@ -13,9 +13,17 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
-app.UseHttpsRedirection();
 app.UseSwagger();
 app.UseSwaggerUI();
+
+app.UseHttpsRedirection();
+
+// app.UseCors(b =>
+// {
+//     b.WithOrigins("http://localhost:5094");
+//     b.AllowAnyHeader();
+//     b.AllowAnyMethod();
+// });
 
 var summaries = new[]
 {
