@@ -19,9 +19,14 @@ public interface IBooksDatasource
 public class BooksDataSource: IBooksDatasource
 {
    
-   public Task<Book?> getBook(Guid bookId)
+   public async Task<Book?> getBook(Guid bookId)
    {
-      throw new NotImplementedException();
+      return
+         new Book(
+            "How I learn",
+            new Author("Bob", "Fischer", "bob.fischer@gmail.com"),
+            null
+         );
    }
 
    public Task<List<Book?>> getBooks()

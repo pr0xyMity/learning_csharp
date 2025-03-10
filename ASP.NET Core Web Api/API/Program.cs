@@ -1,6 +1,7 @@
 using API.Domains.Books.Controller;
 using API.Domains.Books.Data.DataSources;
 using API.Domains.Books.Data.Repositories;
+using API.Domains.Books.Domain.Repositories;
 using Microsoft.AspNetCore.StaticFiles;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +15,8 @@ builder.Services.AddControllers(options =>
    options.ReturnHttpNotAcceptable = true; 
 }).AddXmlSerializerFormatters();
 builder.Services.AddSingleton<FileExtensionContentTypeProvider>();
+builder.Services.AddSingleton<IBooksDatasource, BooksDataSource>();
+builder.Services.AddSingleton<IBooksRepository, BooksRepository>();
 
 builder.Services.AddSwaggerGen();
 
@@ -34,9 +37,6 @@ var summaries = new[]
 {
     "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
 };
-var bookDatasource = new BooksDataSource();
-var bookRepository = new BooksRepository(bookDatasource);
-var bookController = new BooksController(bookRepository);
 
 app.MapControllers();
 

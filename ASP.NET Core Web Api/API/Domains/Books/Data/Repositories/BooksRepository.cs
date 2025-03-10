@@ -9,7 +9,7 @@ public class BooksRepository : IBooksRepository
 
     public BooksRepository(IBooksDatasource booksDatasource)
     {
-       _booksDatasource = booksDatasource; 
+       _booksDatasource = booksDatasource ?? throw new ArgumentNullException(nameof(booksDatasource)); 
     }
     
     IBooksDatasource  _booksDatasource;

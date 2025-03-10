@@ -8,18 +8,18 @@ namespace API.Domains.Books.Controller;
 [Route("api/books")]
 public class BooksController : ControllerBase
 {
-   private readonly IBooksRepository booksRepository;
+   private readonly IBooksRepository _booksRepository;
 
    public BooksController(IBooksRepository booksRepository)
    {
-       this.booksRepository = booksRepository;
+       this._booksRepository = booksRepository ?? throw new ArgumentNullException(nameof(booksRepository));
    }
 
    [HttpGet]
    [ProducesResponseType(typeof(List<Book>), StatusCodes.Status200OK)]
    public async Task<ActionResult<List<Book>>> GetBooks()
    {
-       List<Book?> books = await booksRepository.getBooks();
+       List<Book?> books = await _booksRepository.getBooks();
        if (books.Count() == 0)
        {
            return NoContent();
@@ -31,7 +31,7 @@ public class BooksController : ControllerBase
    [ProducesResponseType(typeof(Book), StatusCodes.Status200OK)]
    public async Task<ActionResult<Book>> GetBookById(Guid id)
    {
-       Book? book = await booksRepository.getBookById(id);
+       Book? book = await _booksRepository.getBookById(id);
        if (book == null)
        {
            return NoContent();
