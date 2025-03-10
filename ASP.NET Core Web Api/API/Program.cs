@@ -7,7 +7,12 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
-builder.Services.AddControllers();
+builder.Services.AddControllers(options =>
+{
+    // Used for sending 406 code if the application/json or application/xml is not met
+   options.ReturnHttpNotAcceptable = true; 
+}).AddXmlSerializerFormatters();
+
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
