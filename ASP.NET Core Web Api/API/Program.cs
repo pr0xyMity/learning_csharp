@@ -17,12 +17,17 @@ builder.Services.AddControllers(options =>
 builder.Services.AddSingleton<FileExtensionContentTypeProvider>();
 builder.Services.AddSingleton<IBooksDatasource, BooksDataSource>();
 builder.Services.AddSingleton<IBooksRepository, BooksRepository>();
+builder.Services.AddProblemDetails();
 
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 app.UseCors("AllowAll");
 
+if (!app.Environment.IsDevelopment())
+{
+    app.UseExceptionHandler();
+}
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
