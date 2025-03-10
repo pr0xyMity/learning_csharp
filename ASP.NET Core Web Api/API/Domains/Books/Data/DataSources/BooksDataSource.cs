@@ -21,6 +21,7 @@ public class BooksDataSource: IBooksDatasource
    
    public async Task<Book?> getBook(Guid bookId)
    {
+      await Task.Delay(1);
       return
          new Book(
             "How I learn",
