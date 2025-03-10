@@ -19,7 +19,7 @@ public class BooksController : ControllerBase
    [ProducesResponseType(typeof(List<Book>), StatusCodes.Status200OK)]
    public async Task<ActionResult<List<Book>>> GetBooks()
    {
-       List<Book> books = await booksRepository.getBooks();
+       List<Book?> books = await booksRepository.getBooks();
        if (books.Count() == 0)
        {
            return NoContent();
@@ -31,7 +31,7 @@ public class BooksController : ControllerBase
    [ProducesResponseType(typeof(Book), StatusCodes.Status200OK)]
    public async Task<ActionResult<Book>> GetBookById(Guid id)
    {
-       Book book = await booksRepository.getBookById(id);
+       Book? book = await booksRepository.getBookById(id);
        if (book == null)
        {
            return NoContent();
