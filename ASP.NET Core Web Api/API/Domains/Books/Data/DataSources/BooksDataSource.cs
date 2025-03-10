@@ -30,8 +30,20 @@ public class BooksDataSource: IBooksDatasource
          );
    }
 
-   public Task<List<Book?>> getBooks()
+   public async Task<List<Book?>> getBooks()
    {
-      throw new NotImplementedException();
+      await Task.Delay(1);
+      return new List<Book>([
+            new Book(
+               "How I learn",
+               new Author("Bob", "Fischer", "bob.fischer@gmail.com"),
+               null
+            ),
+            new Book(
+               "How I sleep",
+               new Author("Martin", "Robert", "martin.robert@gmail.com"),
+               null
+            )]
+      )!;
    }
 }
