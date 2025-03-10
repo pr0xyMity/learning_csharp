@@ -1,6 +1,7 @@
 using API.Domains.Books.Controller;
 using API.Domains.Books.Data.DataSources;
 using API.Domains.Books.Data.Repositories;
+using Microsoft.AspNetCore.StaticFiles;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,7 @@ builder.Services.AddControllers(options =>
     // Used for sending 406 code if the application/json or application/xml is not met
    options.ReturnHttpNotAcceptable = true; 
 }).AddXmlSerializerFormatters();
+builder.Services.AddSingleton<FileExtensionContentTypeProvider>();
 
 builder.Services.AddSwaggerGen();
 
