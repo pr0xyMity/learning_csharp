@@ -35,3 +35,4 @@
 /Users/konrad.barrek/Projects/learning_c#/ASP.NET Core Web Api/API/obj/Debug/net9.0/API.pdb
 /Users/konrad.barrek/Projects/learning_c#/ASP.NET Core Web Api/API/obj/Debug/net9.0/API.genruntimeconfig.cache
 /Users/konrad.barrek/Projects/learning_c#/ASP.NET Core Web Api/API/obj/Debug/net9.0/ref/API.dll
+/Users/konrad.barrek/Projects/learning_c#/ASP.NET Core Web Api/API/bin/Debug/net9.0/konradcv.jpg
