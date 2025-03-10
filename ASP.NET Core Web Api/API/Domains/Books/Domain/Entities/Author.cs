@@ -2,11 +2,11 @@ namespace API.Domains.Books.Domain;
 
 public class Author
 {
-    String FirstName { get; set; }
-    String LastName { get; set; }
-    String? Email { get; set; }
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public string? Email { get; set; }
 
-    Author(string firstName, string lastName, string? email)
+    public Author(string firstName, string lastName, string? email)
     {
         FirstName = firstName;
         LastName = lastName;

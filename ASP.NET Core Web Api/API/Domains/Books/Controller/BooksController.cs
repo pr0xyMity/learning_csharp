@@ -16,6 +16,7 @@ public class BooksController : ControllerBase
    }
 
    [HttpGet]
+   [ProducesResponseType(typeof(List<Book>), StatusCodes.Status200OK)]
    public async Task<ActionResult<List<Book>>> GetBooks()
    {
        List<Book> books = await booksRepository.getBooks();
@@ -26,10 +27,11 @@ public class BooksController : ControllerBase
        return Ok(books);
    }
    
-   [HttpGet("{id:int}")]
-   public async Task<ActionResult<Book>> GetBookById(int id)
+   [HttpGet("{id:guid}")]
+   [ProducesResponseType(typeof(Book), StatusCodes.Status200OK)]
+   public async Task<ActionResult<Book>> GetBookById(Guid id)
    {
-       Book book = await booksRepository.getBookById($"{id}");
+       Book book = await booksRepository.getBookById(id);
        if (book == null)
        {
            return NoContent();

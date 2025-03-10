@@ -4,6 +4,6 @@ public interface IBooksRepository
 {
     Task addBook(Book book);
     Task removeBook(Book book);
-    Task<Book?> getBookById(string bookId);
+    Task<Book?> getBookById(Guid bookId);
     Task<List<Book?>> getBooks();
 }

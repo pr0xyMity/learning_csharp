@@ -7,7 +7,7 @@ public interface IBooksDatasource
    /// <summary>
    /// Get single book details with the book ID.
    /// </summary>
-   Task<Book?> getBook(string bookId);
+   Task<Book?> getBook(Guid bookId);
    
    /// <summary>
    /// Get whole list of available books.
@@ -18,7 +18,7 @@ public interface IBooksDatasource
 public class BooksDataSource: IBooksDatasource
 {
    
-   public Task<Book?> getBook(string bookId)
+   public Task<Book?> getBook(Guid bookId)
    {
       throw new NotImplementedException();
    }

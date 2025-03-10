@@ -24,13 +24,13 @@ public class BooksRepository : IBooksRepository
         throw new NotImplementedException();
     }
 
-    public async Task<Book?> getBookById(string bookId)
+    public async Task<Book?> getBookById(Guid bookId)
     {
         return await _booksDatasource.getBook(bookId);
     }
 
-    public Task<List<Book?>> getBooks()
+    public async Task<List<Book?>> getBooks()
     {
-        throw new NotImplementedException();
+        return await _booksDatasource.getBooks();
     }
 }
