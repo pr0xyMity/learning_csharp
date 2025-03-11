@@ -9,11 +9,6 @@ using Serilog;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-#if DEBUG
-builder.Services.AddTransient<IMailService, LocalMailService>();
-#else
-builder.Services.AddTransient<IMailService, CloudMailService>();
-#endif
 
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Debug()
@@ -27,6 +22,11 @@ builder.Services.AddSingleton<IBooksDatasource, BooksDataSource>();
 builder.Services.AddSingleton<IBooksRepository, BooksRepository>();
 builder.Services.AddProblemDetails();
 builder.Services.AddSwaggerGen();
+#if DEBUG
+builder.Services.AddTransient<IMailService, LocalMailService>();
+#else
+builder.Services.AddTransient<IMailService, CloudMailService>();
+#endif
 builder.Services.AddControllers(options =>
 {
     // Used for sending 406 code if the application/json or application/xml is not met
