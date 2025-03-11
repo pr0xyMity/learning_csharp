@@ -13,10 +13,12 @@ public class Book
     [MaxLength(100)]
     public string Title  { get; set; } 
     
-    public ICollection<Author> Authors  { get; set; } = new List<Author>();
+    [Required] 
+    public ICollection<Author> Authors  { get; set; }
 
     public Book(string title)
     {
         Title = title;
+        Authors = new List<Author>();
     } 
 }
