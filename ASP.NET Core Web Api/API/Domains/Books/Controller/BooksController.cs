@@ -1,4 +1,5 @@
 using API.Domains.Books.Domain;
+using API.Domains.Books.Domain.Models;
 using API.Domains.Books.Domain.Repositories;
 using API.Domains.Mail.Domain.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -25,7 +26,8 @@ public class BooksController : ControllerBase
    {
        _mailService.Send("GetBooks", "Took the books!");
        
-       List<BookDTO?> books = await _booksRepository.getBooks();
+       List<BookModel> books = await _booksRepository.GetBooks();
+       
        if (books.Count() == 0)
        {
            return NoContent();
@@ -35,13 +37,17 @@ public class BooksController : ControllerBase
    
    [HttpGet("{id:guid}")]
    [ProducesResponseType(typeof(BookDTO), StatusCodes.Status200OK)]
-   public async Task<ActionResult<BookDTO>> GetBookById(Guid id)
+   public async Task<ActionResult<BookDTO>> GetBookById(string id)
    {
-       BookDTO? book = await _booksRepository.getBookById(id);
+       BookModel? book = await _booksRepository.GetBookById(id);
+       
        if (book == null)
        {
            return NoContent();
        }
+
+       BookDTO bookDto = new BookDTO(book.Id, book.Title, book.Author);
+
        return Ok(book);
    }
 }

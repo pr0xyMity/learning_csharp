@@ -8,7 +8,7 @@ public class BookDTO
     
     public string Title  { get; set; } 
     
-    public ICollection<AuthorDTO> Author  { get; set; } = new List<AuthorDTO>();
+    public ICollection<Author> Author  { get; set; }
 
     public int NumberOfAuthors
     {
@@ -16,5 +16,12 @@ public class BookDTO
         {
             return Author.Count();
         }
+    }
+
+    public BookDTO(string id, string title, ICollection<Author> author)
+    {
+        Id = id;
+        Title = title;
+        Author = author;
     }
 }
