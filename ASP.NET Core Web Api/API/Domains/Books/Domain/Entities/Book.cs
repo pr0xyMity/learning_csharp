@@ -14,11 +14,12 @@ public class Book
     public string Title  { get; set; } 
     
     [Required] 
+    [MinLength(1)]
     public ICollection<Author> Authors  { get; set; }
 
-    public Book(string title)
+    public Book(string title, ICollection<Author> authors)
     {
         Title = title;
-        Authors = new List<Author>();
+        Authors = authors;
     } 
 }

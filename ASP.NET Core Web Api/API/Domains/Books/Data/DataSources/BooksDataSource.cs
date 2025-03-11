@@ -23,18 +23,29 @@ public class BooksDataSource: IBooksDatasource
    {
       await Task.Delay(1);
       return
-         new Book( "How I learn" );
+         new Book( "How I learn" ,
+            new List<Author>([new Author("Tony", "Smart")]
+               )
+            );
    }
 
    public async Task<List<Book>> GetBooks()
    {
       await Task.Delay(1);
       return new List<Book>([
-         new Book( "How I learn" ),
-         new Book( "How I sleep" ),
-         new Book( "How I design" ),
-         new Book( "How I think" ),
-            ]
-      )!;
+         new Book( "How I learn" ,
+            new List<Author>(
+               [new Author("Tony", "Smart")]
+            )),
+         new Book( "How I sleep" ,
+            new List<Author>([new Author("Amorio", "Snow")]
+            )),
+         new Book( "How I design" ,
+            new List<Author>([new Author("Fito", "Kamino")]
+            )),
+         new Book( "How I think" ,
+            new List<Author>([new Author("Marco", "Look")])
+            ),
+      ])!;
    }
 }
