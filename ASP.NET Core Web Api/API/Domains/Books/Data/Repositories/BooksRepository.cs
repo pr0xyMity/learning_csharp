@@ -1,5 +1,6 @@
 using API.Domains.Books.Data.DataSources;
 using API.Domains.Books.Domain;
+using API.Domains.Books.Domain.Models;
 using API.Domains.Books.Domain.Repositories;
 
 namespace API.Domains.Books.Data.Repositories;
@@ -14,23 +15,42 @@ public class BooksRepository : IBooksRepository
     
     IBooksDatasource  _booksDatasource;
     
-    public Task addBook(BookDTO bookDto)
+    public Task AddBook(BookDTO bookDto)
     {
         throw new NotImplementedException();
     }
 
-    public Task removeBook(BookDTO bookDto)
+    public Task RemoveBook(string bookId)
     {
         throw new NotImplementedException();
     }
 
-    public async Task<BookDTO?> getBookById(Guid bookId)
+    public async Task<BookModel> GetBookById(string bookId)
     {
-        return await _booksDatasource.getBook(bookId);
+        Book? book = await _booksDatasource.GetBook(bookId);
+
+        if (book == null)
+        {
+            throw new Exception($"Book with {bookId} was not found");
+        }
+
+        return new BookModel(book.Id, book.Title, book.Authors);
     }
 
-    public async Task<List<BookDTO?>> getBooks()
+    public async Task<List<BookModel>> GetBooks()
     {
-        return await _booksDatasource.getBooks();
+        List<Book> books = await _booksDatasource.GetBooks();
+
+        if (books.Count == 0)
+        {
+            return new List<BookModel>();
+        }
+        else
+        {
+            List<BookModel> booksModel = books
+                .Select(book => new BookModel(book.Id, book.Title, book.Authors))
+                .ToList();
+            return booksModel;
+        }
     }
 }
