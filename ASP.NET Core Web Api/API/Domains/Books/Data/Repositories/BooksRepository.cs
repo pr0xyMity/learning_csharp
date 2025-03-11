@@ -7,13 +7,13 @@ namespace API.Domains.Books.Data.Repositories;
 
 public class BooksRepository : IBooksRepository
 {
+    IBooksDatasource  _booksDatasource;
 
     public BooksRepository(IBooksDatasource booksDatasource)
     {
        _booksDatasource = booksDatasource ?? throw new ArgumentNullException(nameof(booksDatasource)); 
     }
     
-    IBooksDatasource  _booksDatasource;
     
     public Task AddBook(BookDTO bookDto)
     {
@@ -25,13 +25,13 @@ public class BooksRepository : IBooksRepository
         throw new NotImplementedException();
     }
 
-    public async Task<BookModel> GetBookById(string bookId)
+    public async Task<BookModel?> GetBookById(string bookId)
     {
         Book? book = await _booksDatasource.GetBook(bookId);
 
         if (book == null)
         {
-            throw new Exception($"Book with {bookId} was not found");
+            return null;
         }
 
         return new BookModel(book.Id, book.Title, book.Authors);
