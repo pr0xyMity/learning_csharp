@@ -13,7 +13,7 @@ public interface IBooksDatasource
    /// <summary>
    /// Get whole list of available books.
    /// </summary>
-   Task<List<Book?>> GetBooks();
+   Task<List<Book>> GetBooks();
 }
 
 public class BooksDataSource: IBooksDatasource
@@ -26,7 +26,7 @@ public class BooksDataSource: IBooksDatasource
          new Book( "How I learn" );
    }
 
-   public async Task<List<Book?>> GetBooks()
+   public async Task<List<Book>> GetBooks()
    {
       await Task.Delay(1);
       return new List<Book>([
