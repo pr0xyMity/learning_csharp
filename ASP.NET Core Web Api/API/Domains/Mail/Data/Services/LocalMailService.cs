@@ -3,8 +3,14 @@ namespace API.Domains.Mail.Data;
 
 public class LocalMailService : IMailService
 {
-   private string _mailTo = "admin@mail.com";
-   private string _mailFrom = "noreply@mail.com";
+   private string _mailTo = String.Empty;
+   private string _mailFrom = String.Empty;
+
+   LocalMailService(IConfiguration configuration)
+   {
+      _mailTo = configuration["mailSettings:mailToAddress"];
+      _mailFrom = configuration["mailSettings:mailFromAddress"];
+   }
 
    public void Send(string subject, string message)
    {
