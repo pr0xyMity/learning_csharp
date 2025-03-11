@@ -46,3 +46,4 @@
 /Users/konrad.barrek/Projects/learning_c#/ASP.NET Core Web Api/API/bin/Debug/net9.0/Serilog.Sinks.Console.dll
 /Users/konrad.barrek/Projects/learning_c#/ASP.NET Core Web Api/API/bin/Debug/net9.0/Serilog.Sinks.Debug.dll
 /Users/konrad.barrek/Projects/learning_c#/ASP.NET Core Web Api/API/bin/Debug/net9.0/Serilog.Sinks.File.dll
+/Users/konrad.barrek/Projects/learning_c#/ASP.NET Core Web Api/API/bin/Debug/net9.0/appsettings.Production.json
