@@ -2,10 +2,18 @@ using API.Domains.Books.Controller;
 using API.Domains.Books.Data.DataSources;
 using API.Domains.Books.Data.Repositories;
 using API.Domains.Books.Domain.Repositories;
+using API.Domains.Mail.Data;
+using API.Domains.Mail.Domain.Services;
 using Microsoft.AspNetCore.StaticFiles;
 using Serilog;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+
+#if DEBUG
+builder.Services.AddTransient<IMailService, LocalMailService>();
+#else
+builder.Services.AddTransient<IMailService, CloudMailService>();
+#endif
 
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Debug()
