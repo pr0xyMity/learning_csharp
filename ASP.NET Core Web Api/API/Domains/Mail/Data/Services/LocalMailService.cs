@@ -6,7 +6,7 @@ public class LocalMailService : IMailService
    private string _mailTo = String.Empty;
    private string _mailFrom = String.Empty;
 
-   LocalMailService(IConfiguration configuration)
+   public LocalMailService(IConfiguration configuration)
    {
       _mailTo = configuration["mailSettings:mailToAddress"];
       _mailFrom = configuration["mailSettings:mailFromAddress"];

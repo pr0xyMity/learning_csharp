@@ -6,7 +6,7 @@ public class CloudMailService : IMailService
    private string _mailTo = String.Empty;
    private string _mailFrom = String.Empty;
 
-   CloudMailService(IConfiguration configuration)
+   public CloudMailService(IConfiguration configuration)
    {
       _mailTo = configuration["mailSettings:mailToAddress"];
       _mailFrom = configuration["mailSettings:mailFromAddress"];
