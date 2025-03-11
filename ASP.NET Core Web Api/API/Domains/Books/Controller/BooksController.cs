@@ -16,10 +16,10 @@ public class BooksController : ControllerBase
    }
 
    [HttpGet]
-   [ProducesResponseType(typeof(List<Book>), StatusCodes.Status200OK)]
-   public async Task<ActionResult<List<Book>>> GetBooks()
+   [ProducesResponseType(typeof(List<BookDTO>), StatusCodes.Status200OK)]
+   public async Task<ActionResult<List<BookDTO>>> GetBooks()
    {
-       List<Book?> books = await _booksRepository.getBooks();
+       List<BookDTO?> books = await _booksRepository.getBooks();
        if (books.Count() == 0)
        {
            return NoContent();
@@ -28,10 +28,10 @@ public class BooksController : ControllerBase
    }
    
    [HttpGet("{id:guid}")]
-   [ProducesResponseType(typeof(Book), StatusCodes.Status200OK)]
-   public async Task<ActionResult<Book>> GetBookById(Guid id)
+   [ProducesResponseType(typeof(BookDTO), StatusCodes.Status200OK)]
+   public async Task<ActionResult<BookDTO>> GetBookById(Guid id)
    {
-       Book? book = await _booksRepository.getBookById(id);
+       BookDTO? book = await _booksRepository.getBookById(id);
        if (book == null)
        {
            return NoContent();

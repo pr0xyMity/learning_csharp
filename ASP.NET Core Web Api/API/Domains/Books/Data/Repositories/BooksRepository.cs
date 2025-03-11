@@ -14,22 +14,22 @@ public class BooksRepository : IBooksRepository
     
     IBooksDatasource  _booksDatasource;
     
-    public Task addBook(Book book)
+    public Task addBook(BookDTO bookDto)
     {
         throw new NotImplementedException();
     }
 
-    public Task removeBook(Book book)
+    public Task removeBook(BookDTO bookDto)
     {
         throw new NotImplementedException();
     }
 
-    public async Task<Book?> getBookById(Guid bookId)
+    public async Task<BookDTO?> getBookById(Guid bookId)
     {
         return await _booksDatasource.getBook(bookId);
     }
 
-    public async Task<List<Book?>> getBooks()
+    public async Task<List<BookDTO?>> getBooks()
     {
         return await _booksDatasource.getBooks();
     }

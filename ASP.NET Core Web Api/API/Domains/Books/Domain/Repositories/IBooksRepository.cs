@@ -2,8 +2,8 @@ namespace API.Domains.Books.Domain.Repositories;
 
 public interface IBooksRepository
 {
-    Task addBook(Book book);
-    Task removeBook(Book book);
-    Task<Book?> getBookById(Guid bookId);
-    Task<List<Book?>> getBooks();
+    Task addBook(BookDTO bookDto);
+    Task removeBook(BookDTO bookDto);
+    Task<BookDTO?> getBookById(Guid bookId);
+    Task<List<BookDTO?>> getBooks();
 }
