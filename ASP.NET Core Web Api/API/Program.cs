@@ -1,10 +1,12 @@
 using API.Domains.Books.Controller;
 using API.Domains.Books.Data.DataSources;
 using API.Domains.Books.Data.Repositories;
+using API.Domains.Books.Domain;
 using API.Domains.Books.Domain.Repositories;
 using API.Domains.Mail.Data;
 using API.Domains.Mail.Domain.Services;
 using Microsoft.AspNetCore.StaticFiles;
+using Microsoft.EntityFrameworkCore;
 using Serilog;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
@@ -32,6 +34,10 @@ builder.Services.AddControllers(options =>
     // Used for sending 406 code if the application/json or application/xml is not met
    options.ReturnHttpNotAcceptable = true; 
 }).AddXmlSerializerFormatters();
+
+builder.Services.AddDbContext<BookInfoContext>(optionsBuilder =>
+ optionsBuilder.UseSqlite("Data Source=books.db")
+);
 
 var app = builder.Build();
 app.UseCors("AllowAll");
