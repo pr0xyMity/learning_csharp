@@ -16,7 +16,9 @@ Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()
     .WriteTo.File("logs/log.txt", rollingInterval: RollingInterval.Day).CreateLogger();
 builder.Host.UseSerilog();
-
+builder.Services.AddDbContext<BookContext>(optionsBuilder =>
+    optionsBuilder.UseSqlite(builder.Configuration["ConnectionStrings:BookContext"])
+);
 builder.Services.AddOpenApi();
 builder.Services.AddSingleton<FileExtensionContentTypeProvider>();
 builder.Services.AddScoped<IBooksDatasource, BooksDataSource>();
@@ -35,9 +37,6 @@ builder.Services.AddControllers(options =>
     options.ReturnHttpNotAcceptable = true;
 }).AddXmlSerializerFormatters();
 
-builder.Services.AddDbContext<BookContext>(optionsBuilder =>
-    optionsBuilder.UseSqlite(builder.Configuration["ConnectionString:BookInfoContext"])
-);
 
 var app = builder.Build();
 app.UseCors("AllowAll");
