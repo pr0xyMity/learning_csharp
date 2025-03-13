@@ -42,8 +42,6 @@ public class AuthorsController : ControllerBase
 
         if (book == null) return NoContent();
 
-        var bookDto = new BookDTO(book.Id, book.Title, book.Author);
-
-        return Ok(book);
+        return Ok(_mapper.Map<AuthorDTO>(book));
     }
 }
