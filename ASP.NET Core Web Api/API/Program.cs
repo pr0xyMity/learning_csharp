@@ -19,10 +19,11 @@ builder.Host.UseSerilog();
 
 builder.Services.AddOpenApi();
 builder.Services.AddSingleton<FileExtensionContentTypeProvider>();
-builder.Services.AddSingleton<IBooksDatasource, BooksDataSource>();
-builder.Services.AddSingleton<IBooksRepository, BooksRepository>();
+builder.Services.AddScoped<IBooksDatasource, BooksDataSource>();
+builder.Services.AddScoped<IBooksRepository, BooksRepository>();
 builder.Services.AddProblemDetails();
 builder.Services.AddSwaggerGen();
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 #if DEBUG
 builder.Services.AddTransient<IMailService, LocalMailService>();
 #else
