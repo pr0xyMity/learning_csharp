@@ -8,4 +8,9 @@ public interface IBooksRepository
     Task RemoveBook(string bookId);
     Task<BookModel?> GetBookById(string bookId);
     Task<List<BookModel>> GetBooks();
+
+    Task AddAuthor(AuthorDTO authorDto);
+    Task RemoveAuthor(string authorId);
+    Task<List<AuthorModel>> GetAuthors(bool includeBooks);
+    Task<AuthorModel?> GetAuthor(string authorId);
 }
