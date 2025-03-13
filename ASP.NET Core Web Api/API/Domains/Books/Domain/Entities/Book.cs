@@ -16,6 +16,10 @@ public class Book
     [Required] 
     [MinLength(1)]
     public ICollection<Author> Authors { get; set; } = new List<Author>();
+    
+    [Required]
+    [MaxLength(400)]
+    public string Description { get; set; }
 
     // Private parameterless constructor for EF Core
     private Book() {}
