@@ -24,10 +24,6 @@ public class BookInfoContext : DbContext
             .WithMany(a => a.Books)
             .UsingEntity(j => j.ToTable("AuthorBook"));
 
-        // Ensure that a book has at least one author
-        // modelBuilder.Entity<Book>()
-        //     .HasCheckConstraint("CK_Book_AtLeastOneAuthor", "EXISTS (SELECT 1 FROM AuthorBook WHERE BookId = Id)");
-
         SeedData(modelBuilder);
     }
 
