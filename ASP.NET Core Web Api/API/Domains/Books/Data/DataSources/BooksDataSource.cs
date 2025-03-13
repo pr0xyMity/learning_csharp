@@ -42,7 +42,9 @@ public class BooksDataSource : IBooksDatasource
 
     public async Task<List<Book>> GetBooks()
     {
-        return await _bookContext.Books.ToListAsync();
+        return await _bookContext.Books
+            .Include(book => book.Authors)
+            .ToListAsync();
     }
 
     public async Task<Author?> GetAuthor(string authorId)

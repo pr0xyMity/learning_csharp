@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using API.Domains.Books.Data.DataSources;
 using API.Domains.Books.Data.Repositories;
 using API.Domains.Books.Domain;
@@ -35,7 +36,10 @@ builder.Services.AddControllers(options =>
 {
     // Used for sending 406 code if the application/json or application/xml is not met
     options.ReturnHttpNotAcceptable = true;
-}).AddXmlSerializerFormatters();
+}).AddXmlSerializerFormatters().AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+});
 
 
 var app = builder.Build();
