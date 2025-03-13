@@ -1,4 +1,3 @@
-using API.Domains.Books.Controller;
 using API.Domains.Books.Data.DataSources;
 using API.Domains.Books.Data.Repositories;
 using API.Domains.Books.Domain;
@@ -9,7 +8,7 @@ using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 
-WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+var builder = WebApplication.CreateBuilder(args);
 
 
 Log.Logger = new LoggerConfiguration()
@@ -32,11 +31,11 @@ builder.Services.AddTransient<IMailService, CloudMailService>();
 builder.Services.AddControllers(options =>
 {
     // Used for sending 406 code if the application/json or application/xml is not met
-   options.ReturnHttpNotAcceptable = true; 
+    options.ReturnHttpNotAcceptable = true;
 }).AddXmlSerializerFormatters();
 
 builder.Services.AddDbContext<BookInfoContext>(optionsBuilder =>
- optionsBuilder.UseSqlite("Data Source=books.db")
+    optionsBuilder.UseSqlite(builder.Configuration["ConnectionString:BookInfoContext"])
 );
 
 var app = builder.Build();
@@ -45,12 +44,14 @@ app.UseCors("AllowAll");
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler();
-} else 
+}
+else
 {
     app.MapOpenApi();
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
 app.UseHttpsRedirection();
 app.MapControllers();
 app.Run();
