@@ -34,7 +34,7 @@ builder.Services.AddControllers(options =>
     options.ReturnHttpNotAcceptable = true;
 }).AddXmlSerializerFormatters();
 
-builder.Services.AddDbContext<BookInfoContext>(optionsBuilder =>
+builder.Services.AddDbContext<BookContext>(optionsBuilder =>
     optionsBuilder.UseSqlite(builder.Configuration["ConnectionString:BookInfoContext"])
 );
 

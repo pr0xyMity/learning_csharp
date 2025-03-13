@@ -17,7 +17,7 @@
       "applicationUrl": "http://localhost:5094",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Production",
-        "ConnectionStrings:BookInfoContext": "Data Source=books.db"
+        "ConnectionStrings:BookContext": "Data Source=books.db"
       }
     },
     "https": {

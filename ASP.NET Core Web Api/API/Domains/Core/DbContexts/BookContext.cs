@@ -2,9 +2,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Domains.Books.Domain;
 
-public class BookInfoContext : DbContext
+public class BookContext : DbContext
 {
-    public BookInfoContext(DbContextOptions<BookInfoContext> options)
+    public BookContext(DbContextOptions<BookContext> options)
         : base(options)
     {
     }

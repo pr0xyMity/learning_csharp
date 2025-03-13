@@ -1,5 +1,4 @@
 /Users/konrad.barrek/Projects/learning_c#/ASP.NET Core Web Api/API/bin/Debug/net9.0/appsettings.Development.json
-/Users/konrad.barrek/Projects/learning_c#/ASP.NET Core Web Api/API/bin/Debug/net9.0/appsettings.json
 /Users/konrad.barrek/Projects/learning_c#/ASP.NET Core Web Api/API/bin/Debug/net9.0/API.staticwebassets.endpoints.json
 /Users/konrad.barrek/Projects/learning_c#/ASP.NET Core Web Api/API/bin/Debug/net9.0/API
 /Users/konrad.barrek/Projects/learning_c#/ASP.NET Core Web Api/API/bin/Debug/net9.0/API.deps.json
