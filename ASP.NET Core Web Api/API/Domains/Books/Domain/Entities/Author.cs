@@ -11,5 +11,5 @@ public class Author
 
     [Required] [MaxLength(50)] public string Name { get; set; }
     [MaxLength(60)] [EmailAddress] public string? Email { get; set; }
-    [Required] public List<Book> Books { get; set; } = new();
+    [Required] public ICollection<Book> Books { get; set; } = new List<Book>();
 }
