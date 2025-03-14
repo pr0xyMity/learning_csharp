@@ -44,7 +44,7 @@ public class BooksRepository : IBooksRepository
 
         if (books.Count == 0) return new List<BookModel>();
 
-        return _mapper.Map<List<BookModel>>(books);
+        return books;
     }
 
     public Task AddAuthor(AuthorDTO authorDto)
