@@ -1,4 +1,5 @@
 using API.Domains.Books.Domain;
+using API.Domains.Books.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Domains.Books.Data.DataSources;
@@ -13,7 +14,7 @@ public interface IBooksDatasource
     /// <summary>
     ///     Get whole list of available books.
     /// </summary>
-    Task<List<Book>> GetBooks();
+    Task<List<BookModel>> GetBooks();
 
     /// <summary>
     ///     Get single author details with the book ID.
@@ -40,10 +41,20 @@ public class BooksDataSource : IBooksDatasource
         return await _bookContext.Books.Where(book => book.Id == bookId).FirstOrDefaultAsync();
     }
 
-    public async Task<List<Book>> GetBooks()
+    public async Task<List<BookModel>> GetBooks()
     {
         return await _bookContext.Books
             .Include(book => book.Authors)
+            .Select(book => new BookModel
+            {
+                Id = book.Id,
+                Title = book.Title,
+                Authors = book.Authors.Select(author => new AuthorModel
+                {
+                    Id = author.Id,
+                    Name = author.Name
+                }).ToList()
+            })
             .ToListAsync();
     }
 
