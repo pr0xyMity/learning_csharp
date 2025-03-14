@@ -13,7 +13,7 @@ public class Book
 
     [Required]
     [MinLength(1, ErrorMessage = "Book must at least have one author.")]
-    public List<Author> Authors { get; set; } = new();
+    public ICollection<Author> Authors { get; set; } = new List<Author>();
 
     [MaxLength(400)] public string? Description { get; set; }
 }
