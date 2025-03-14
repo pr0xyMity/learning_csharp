@@ -2,7 +2,7 @@ namespace API.Domains.Books.Domain;
 
 public class BookDTO
 {
-    public BookDTO(string id, string title, ICollection<Author> authors)
+    public BookDTO(string id, string title, ICollection<AuthorWithoutBooksDTO> authors)
     {
         Id = id;
         Title = title;
@@ -13,7 +13,7 @@ public class BookDTO
 
     public string Title { get; set; }
 
-    public ICollection<Author> Authors { get; set; }
+    public ICollection<AuthorWithoutBooksDTO> Authors { get; set; }
 
     public int NumberOfAuthors => Authors.Count();
 }
