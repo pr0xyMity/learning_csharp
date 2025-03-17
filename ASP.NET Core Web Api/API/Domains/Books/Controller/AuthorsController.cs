@@ -23,10 +23,6 @@ public class AuthorsController : ControllerBase
     }
 
     [HttpGet]
-    [SwaggerOperation(
-        Summary = "Get authors",
-        Description = "Get a list of authors, optionally including their books."
-    )]
     [SwaggerResponse(200, "The list of authors", typeof(List<AuthorDto>))]
     public async Task<ActionResult<List<AuthorDto>>> GetAuthors([FromQuery] bool includeBooks = false)
     {
@@ -39,11 +35,11 @@ public class AuthorsController : ControllerBase
         return Ok(_mapper.Map<List<AuthorDto>>(authors));
     }
 
-    [HttpGet("{id:guid}")]
+    [HttpGet("{id:int}")]
     [ProducesResponseType(typeof(AuthorDto), StatusCodes.Status200OK)]
-    public async Task<ActionResult<AuthorDto>> GetAuthorById(string id)
+    public async Task<ActionResult<AuthorDto>> GetAuthorById(int id)
     {
-        var book = await _authorsRepository.GetAuthor(id);
+        var book = await _authorsRepository.GetAuthor(id.ToString());
 
         if (book == null) return NoContent();
 
