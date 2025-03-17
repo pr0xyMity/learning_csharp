@@ -60,11 +60,11 @@ public class AuthorsController : ControllerBase
         return Ok(_mapper.Map<List<AuthorDto>>(authors));
     }
 
-    [HttpGet("{id:int}")]
+    [HttpGet("{authorId}")]
     [ProducesResponseType(typeof(AuthorDto), StatusCodes.Status200OK)]
-    public async Task<ActionResult<AuthorDto>> GetAuthorById(int id)
+    public async Task<ActionResult<AuthorDto>> GetAuthorById(string id)
     {
-        var book = await _authorsRepository.GetAuthor(id.ToString());
+        var book = await _authorsRepository.GetAuthor(id);
 
         if (book == null) return NoContent();
 
