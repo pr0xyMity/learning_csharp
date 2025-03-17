@@ -39,7 +39,7 @@ public class AuthorsDataSource : IAuthorsDatasource
             {
                 Id = author.Id,
                 Name = author.Name,
-                Books = author.Books.Select(book => new BookModelWithoutAuthors
+                Books = author.Books.Select(book => new BookWithoutAuthorsModel
                 {
                     Id = book.Id,
                     Title = book.Title
@@ -55,7 +55,7 @@ public class AuthorsDataSource : IAuthorsDatasource
             {
                 Id = author.Id,
                 Name = author.Name,
-                Books = new List<BookModelWithoutAuthors>()
+                Books = new List<BookWithoutAuthorsModel>()
             })
             .ToListAsync();
     }
@@ -68,7 +68,7 @@ public class AuthorsDataSource : IAuthorsDatasource
             {
                 Id = author.Id,
                 Name = author.Name,
-                Books = author.Books.Select(book => new BookModelWithoutAuthors
+                Books = author.Books.Select(book => new BookWithoutAuthorsModel
                 {
                     Id = book.Id,
                     Title = book.Title
