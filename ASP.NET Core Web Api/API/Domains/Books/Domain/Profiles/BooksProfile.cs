@@ -8,6 +8,6 @@ public class BooksProfile : Profile
     public BooksProfile()
     {
         CreateMap<Book, BookModel>();
-        CreateMap<BookModel, BookDTO>();
+        CreateMap<BookModel, BookDto>();
     }
 }
