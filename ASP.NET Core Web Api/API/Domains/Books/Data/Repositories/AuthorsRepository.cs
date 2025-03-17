@@ -18,14 +18,16 @@ public class AuthorsRepository : IAuthorsRepository
         _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
     }
 
-    public Task AddAuthor(AuthorDto authorDto)
+    public async Task<AuthorModel> AddAuthor(AuthorForCreationDto authorCreationDto)
     {
-        throw new NotImplementedException();
+        var author = _mapper.Map<Author>(authorCreationDto);
+        var createdAuthor = await _authorsDatasource.AddAuthor(author);
+        return _mapper.Map<AuthorModel>(createdAuthor);
     }
 
-    public Task RemoveAuthor(string authorId)
+    public async Task RemoveAuthor(string authorId)
     {
-        throw new NotImplementedException();
+        await _authorsDatasource.RemoveAuthor(authorId);
     }
 
     public async Task<List<AuthorModel>> GetAuthors(bool includeBooks)

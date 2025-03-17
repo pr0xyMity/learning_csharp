@@ -7,6 +7,16 @@ namespace API.Domains.Books.Data.DataSources;
 public interface IAuthorsDatasource
 {
     /// <summary>
+    ///     Create single author and return created author.
+    /// </summary>
+    Task<Author?> AddAuthor(Author entity);
+
+    /// <summary>
+    ///     Create single author and return created author.
+    /// </summary>
+    Task RemoveAuthor(string authorId);
+
+    /// <summary>
     ///     Get single author details with the books IDs.
     /// </summary>
     Task<AuthorModel?> GetAuthor(string authorId);
@@ -29,6 +39,11 @@ public class AuthorsDataSource : IAuthorsDatasource
     public AuthorsDataSource(BookContext bookContext)
     {
         _bookContext = bookContext ?? throw new ArgumentNullException(nameof(bookContext));
+    }
+
+    public Task RemoveAuthor(string authorId)
+    {
+        throw new NotImplementedException();
     }
 
     public async Task<AuthorModel?> GetAuthor(string authorId)
@@ -75,5 +90,18 @@ public class AuthorsDataSource : IAuthorsDatasource
                 }).ToList()
             })
             .ToListAsync();
+    }
+
+
+    public async Task<Author?> AddAuthor(Author entity)
+    {
+        // Add the entity to the DbSet
+        _bookContext.Authors.Add(entity);
+
+        // Save changes asynchronously to persist the entity
+        await _bookContext.SaveChangesAsync();
+
+        // Return the added entity
+        return entity;
     }
 }

@@ -21,6 +21,19 @@ public class AuthorsController : ControllerBase
         _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
     }
 
+    [HttpPost]
+    [ProducesResponseType(typeof(AuthorDto), StatusCodes.Status201Created)]
+    public async Task<ActionResult<AuthorDto>> CreateAuthor(AuthorForCreationDto authorForCreationDto)
+    {
+        _mailService.Send("CreateAuthors", "You want to write huh?");
+
+        var authorToReturn = await _authorsRepository.AddAuthor(authorForCreationDto);
+
+        var uri = Url.Action(nameof(GetAuthorById), new { id = authorToReturn.Id });
+
+        return Created(uri, authorToReturn);
+    }
+
     [HttpGet]
     [ProducesResponseType(typeof(AuthorDto), StatusCodes.Status200OK)]
     public async Task<ActionResult<List<AuthorDto>>> GetAuthors([FromQuery] bool includeBooks = false)

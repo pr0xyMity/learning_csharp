@@ -10,5 +10,6 @@ public class AuthorsProfile : Profile
         CreateMap<Author, AuthorModel>();
         CreateMap<AuthorModel, AuthorDto>();
         CreateMap<AuthorWithoutBooksModel, AuthorWithoutBooksDto>();
+        CreateMap<AuthorForCreationDto, Author>();
     }
 }
