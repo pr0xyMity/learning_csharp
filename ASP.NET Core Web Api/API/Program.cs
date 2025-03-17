@@ -23,6 +23,8 @@ builder.Services.AddOpenApi();
 builder.Services.AddSingleton<FileExtensionContentTypeProvider>();
 builder.Services.AddScoped<IBooksDatasource, BooksDataSource>();
 builder.Services.AddScoped<IBooksRepository, BooksRepository>();
+builder.Services.AddScoped<IAuthorsDatasource, AuthorsDataSource>();
+builder.Services.AddScoped<IAuthorsRepository, AuthorsRepository>();
 builder.Services.AddProblemDetails();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
