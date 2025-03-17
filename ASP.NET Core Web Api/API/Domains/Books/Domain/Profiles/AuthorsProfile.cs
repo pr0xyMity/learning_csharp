@@ -9,5 +9,6 @@ public class AuthorsProfile : Profile
     {
         CreateMap<Author, AuthorModel>();
         CreateMap<AuthorModel, AuthorDto>();
+        CreateMap<AuthorModel, AuthorWithoutBooksDto>();
     }
 }
