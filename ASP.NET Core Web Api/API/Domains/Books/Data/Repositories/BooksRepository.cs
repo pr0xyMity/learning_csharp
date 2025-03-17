@@ -31,7 +31,7 @@ public class BooksRepository : IBooksRepository
 
     public async Task<BookModel?> GetBookById(string bookId)
     {
-        var book = await _booksDatasource.GetBook(bookId);
+        var book = await _booksDatasource.GetBookById(bookId);
 
         if (book == null) return null;
 
