@@ -12,14 +12,14 @@ public class BooksRepository : IBooksRepository
     private readonly IMapper _mapper;
 
 
-    public BooksRepository(IBooksDatasource booksDatasource, IMapper mapper)
+    public BooksRepository(IBooksDatasource booksDatasource, IMapper mapper, IAuthorsDatasource authorsDatasource)
     {
         _booksDatasource = booksDatasource ?? throw new ArgumentNullException(nameof(booksDatasource));
         _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
     }
 
 
-    public Task AddBook(BookDTO bookDto)
+    public Task AddBook(BookDto bookDto)
     {
         throw new NotImplementedException();
     }
@@ -45,33 +45,5 @@ public class BooksRepository : IBooksRepository
         if (books.Count == 0) return new List<BookModel>();
 
         return books;
-    }
-
-    public Task AddAuthor(AuthorDTO authorDto)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task RemoveAuthor(string authorId)
-    {
-        throw new NotImplementedException();
-    }
-
-    public async Task<List<AuthorModel>> GetAuthors(bool includeBooks)
-    {
-        var authors = await _booksDatasource.GetAuthors();
-
-        if (authors.Count == 0) return new List<AuthorModel>();
-
-        return _mapper.Map<List<AuthorModel>>(authors);
-    }
-
-    public async Task<AuthorModel?> GetAuthor(string authorId)
-    {
-        var author = await _booksDatasource.GetAuthor(authorId);
-
-        if (author == null) return null;
-
-        return _mapper.Map<AuthorModel>(author);
     }
 }
