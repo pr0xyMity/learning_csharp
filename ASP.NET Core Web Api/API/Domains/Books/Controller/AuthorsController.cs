@@ -3,7 +3,6 @@ using API.Domains.Books.Domain.Repositories;
 using API.Domains.Mail.Domain.Services;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using Swashbuckle.AspNetCore.Annotations;
 
 namespace API.Domains.Books.Controller;
 
@@ -23,7 +22,7 @@ public class AuthorsController : ControllerBase
     }
 
     [HttpGet]
-    [SwaggerResponse(200, "The list of authors", typeof(List<AuthorDto>))]
+    [ProducesResponseType(typeof(AuthorDto), StatusCodes.Status200OK)]
     public async Task<ActionResult<List<AuthorDto>>> GetAuthors([FromQuery] bool includeBooks = false)
     {
         _mailService.Send("GetAuthors", "That's him!");
