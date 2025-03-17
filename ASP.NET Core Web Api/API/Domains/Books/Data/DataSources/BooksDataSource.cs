@@ -9,7 +9,7 @@ public interface IBooksDatasource
     /// <summary>
     ///     Get single book details with the book ID.
     /// </summary>
-    Task<Book?> GetBook(string bookId);
+    Task<BookModel?> GetBook(string bookId);
 
     /// <summary>
     ///     Get whole list of available books.
@@ -26,9 +26,20 @@ public class BooksDataSource : IBooksDatasource
         _bookContext = bookContext ?? throw new ArgumentNullException(nameof(bookContext));
     }
 
-    public async Task<Book?> GetBook(string bookId)
+    public async Task<BookModel?> GetBook(string bookId)
     {
-        return await _bookContext.Books.Where(book => book.Id == bookId).FirstOrDefaultAsync();
+        return await _bookContext.Books.Where(book => book.Id == bookId)
+            .Select(book => new BookModel
+            {
+                Id = book.Id,
+                Title = book.Title,
+                Authors = book.Authors.Select(author => new AuthorModel
+                {
+                    Id = author.Id,
+                    Name = author.Name
+                }).ToList()
+            })
+            .FirstOrDefaultAsync();
     }
 
     public async Task<List<BookModel>> GetBooks()

@@ -33,11 +33,11 @@ public class BooksController : ControllerBase
         return Ok(_mapper.Map<List<BookDto>>(books));
     }
 
-    [HttpGet("{id:guid}")]
+    [HttpGet("{id:int}")]
     [ProducesResponseType(typeof(BookDto), StatusCodes.Status200OK)]
-    public async Task<ActionResult<BookDto>> GetBookById(string id)
+    public async Task<ActionResult<BookDto>> GetBookById(int id)
     {
-        var book = await _booksRepository.GetBookById(id);
+        var book = await _booksRepository.GetBookById(id.ToString());
 
         if (book == null) return NoContent();
 
