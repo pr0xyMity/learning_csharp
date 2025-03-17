@@ -21,6 +21,19 @@ public class AuthorsController : ControllerBase
         _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
     }
 
+    [HttpDelete("{authorId}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    public async Task<ActionResult> RemoveAuthor(string authorId)
+    {
+        _mailService.Send("Remove Author", "No more with us!");
+
+        await _authorsRepository.RemoveAuthor(authorId);
+
+        return NoContent();
+    }
+
     [HttpPost]
     [ProducesResponseType(typeof(AuthorDto), StatusCodes.Status201Created)]
     public async Task<ActionResult<AuthorDto>> CreateAuthor(AuthorForCreationDto authorForCreationDto)

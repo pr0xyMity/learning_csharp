@@ -41,9 +41,14 @@ public class AuthorsDataSource : IAuthorsDatasource
         _bookContext = bookContext ?? throw new ArgumentNullException(nameof(bookContext));
     }
 
-    public Task RemoveAuthor(string authorId)
+    public async Task RemoveAuthor(string authorId)
     {
-        throw new NotImplementedException();
+        var entityToDelete = new Author { Id = authorId };
+        // Add the entity to the DbSet
+        _bookContext.Authors.Remove(entityToDelete);
+
+        // Save changes asynchronously to persist the entity
+        await _bookContext.SaveChangesAsync();
     }
 
     public async Task<AuthorModel?> GetAuthor(string authorId)
