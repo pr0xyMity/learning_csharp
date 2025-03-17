@@ -1,6 +1,6 @@
 namespace API.Domains.Books.Domain.Models;
 
-public class BookModelWithoutAuthors
+public class BookWithoutAuthorsModel
 {
     public string Id { get; set; }
 

@@ -33,7 +33,7 @@ public class BooksDataSource : IBooksDatasource
             {
                 Id = book.Id,
                 Title = book.Title,
-                Authors = book.Authors.Select(author => new AuthorModel
+                Authors = book.Authors.Select(author => new AuthorWithoutBooksModel
                 {
                     Id = author.Id,
                     Name = author.Name
@@ -50,7 +50,7 @@ public class BooksDataSource : IBooksDatasource
             {
                 Id = book.Id,
                 Title = book.Title,
-                Authors = book.Authors.Select(author => new AuthorModel
+                Authors = book.Authors.Select(author => new AuthorWithoutBooksModel
                 {
                     Id = author.Id,
                     Name = author.Name
