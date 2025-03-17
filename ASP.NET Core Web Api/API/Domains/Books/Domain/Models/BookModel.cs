@@ -6,7 +6,7 @@ public class BookModel
 
     public string Title { get; set; }
 
-    public List<AuthorModel> Authors { get; set; } = new();
+    public ICollection<AuthorModel> Authors { get; set; } = new List<AuthorModel>();
 
     public bool IsBookEbook()
     {
