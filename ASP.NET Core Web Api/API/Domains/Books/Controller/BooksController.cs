@@ -22,25 +22,25 @@ public class BooksController : ControllerBase
     }
 
     [HttpGet]
-    [ProducesResponseType(typeof(List<BookDTO>), StatusCodes.Status200OK)]
-    public async Task<ActionResult<List<BookDTO>>> GetBooks()
+    [ProducesResponseType(typeof(List<BookDto>), StatusCodes.Status200OK)]
+    public async Task<ActionResult<List<BookDto>>> GetBooks()
     {
         _mailService.Send("GetBooks", "Took the books!");
 
         var books = await _booksRepository.GetBooks();
 
         if (!books.Any()) return NoContent();
-        return Ok(_mapper.Map<List<BookDTO>>(books));
+        return Ok(_mapper.Map<List<BookDto>>(books));
     }
 
     [HttpGet("{id:guid}")]
-    [ProducesResponseType(typeof(BookDTO), StatusCodes.Status200OK)]
-    public async Task<ActionResult<BookDTO>> GetBookById(string id)
+    [ProducesResponseType(typeof(BookDto), StatusCodes.Status200OK)]
+    public async Task<ActionResult<BookDto>> GetBookById(string id)
     {
         var book = await _booksRepository.GetBookById(id);
 
         if (book == null) return NoContent();
 
-        return Ok(_mapper.Map<BookDTO>(book));
+        return Ok(_mapper.Map<BookDto>(book));
     }
 }
