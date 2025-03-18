@@ -1,5 +1,4 @@
 using API.Domains.Books.Data.DataSources;
-using API.Domains.Books.Domain;
 using API.Domains.Books.Domain.Models;
 using API.Domains.Books.Domain.Repositories;
 using AutoMapper;
@@ -18,10 +17,10 @@ public class BooksRepository : IBooksRepository
         _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
     }
 
-
-    public Task AddBook(BookDto bookDto)
+    public async Task<BookModel> AddBook(BookModel bookModel)
     {
-        throw new NotImplementedException();
+        var createdBook = await _booksDatasource.AddBook(bookModel);
+        return _mapper.Map<BookModel>(createdBook);
     }
 
     public Task RemoveBook(string bookId)
@@ -44,6 +43,6 @@ public class BooksRepository : IBooksRepository
 
         if (books.Count == 0) return new List<BookModel>();
 
-        return books;
+        return _mapper.Map<List<BookModel>>(books);
     }
 }
