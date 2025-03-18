@@ -44,6 +44,12 @@ public class AuthorsRepository : IAuthorsRepository
         return authors;
     }
 
+    public async Task<List<AuthorModel>> GetAuthorsByIds(List<string> authorIds)
+    {
+        var authors = await _authorsDatasource.GetAuthorsByIds(authorIds);
+        return _mapper.Map<List<AuthorModel>>(authors);
+    }
+
     public async Task<AuthorModel?> GetAuthor(string authorId)
     {
         var author = await _authorsDatasource.GetAuthor(authorId);
