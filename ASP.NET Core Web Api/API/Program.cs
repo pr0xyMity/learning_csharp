@@ -1,5 +1,6 @@
 using API.Domains.Books.Data.DataSources;
 using API.Domains.Books.Data.Repositories;
+using API.Domains.Books.Data.Services;
 using API.Domains.Books.Domain;
 using API.Domains.Books.Domain.Repositories;
 using API.Domains.Mail.Data;
@@ -21,6 +22,7 @@ builder.Services.AddDbContext<BookContext>(optionsBuilder =>
 );
 builder.Services.AddOpenApi();
 builder.Services.AddSingleton<FileExtensionContentTypeProvider>();
+builder.Services.AddScoped<IBooksService, BooksService>();
 builder.Services.AddScoped<IBooksDatasource, BooksDataSource>();
 builder.Services.AddScoped<IBooksRepository, BooksRepository>();
 builder.Services.AddScoped<IAuthorsDatasource, AuthorsDataSource>();
