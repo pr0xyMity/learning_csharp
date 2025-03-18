@@ -73,9 +73,9 @@ public class AuthorsController : ControllerBase
 
     [HttpGet("{authorId}")]
     [ProducesResponseType(typeof(AuthorDto), StatusCodes.Status200OK)]
-    public async Task<ActionResult<AuthorDto>> GetAuthorById(string id)
+    public async Task<ActionResult<AuthorDto>> GetAuthorById(string authorId)
     {
-        var book = await _authorsRepository.GetAuthor(id);
+        var book = await _authorsRepository.GetAuthor(authorId);
 
         if (book == null) return NoContent();
 
