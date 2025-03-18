@@ -1,5 +1,5 @@
 using API.Domains.Books.Domain;
-using API.Domains.Books.Domain.Repositories;
+using API.Domains.Books.Domain.Models;
 using API.Domains.Mail.Domain.Services;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
@@ -15,15 +15,31 @@ namespace API.Domains.Books.Controller;
 [Route("api/books")]
 public class BooksController : ControllerBase
 {
-    private readonly IBooksRepository _booksRepository;
+    private readonly IBooksService _booksService;
     private readonly IMailService _mailService;
     private readonly IMapper _mapper;
 
-    public BooksController(IBooksRepository booksRepository, IMailService mailService, IMapper mapper)
+    public BooksController(IMailService mailService, IMapper mapper,
+        IBooksService booksService)
     {
-        _booksRepository = booksRepository ?? throw new ArgumentNullException(nameof(booksRepository));
+        _booksService = booksService ?? throw new ArgumentNullException(nameof(booksService));
         _mailService = mailService ?? throw new ArgumentNullException(nameof(mailService));
         _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+    }
+
+    [HttpPost]
+    [ProducesResponseType(typeof(BookDto), StatusCodes.Status201Created)]
+    public async Task<ActionResult<BookDto>> AddBook(BookForCreationDto bookForCreationDto)
+    {
+        _mailService.Send("Create a book", "You want to write huh?");
+
+        var bookModel = _mapper.Map<BookModel>(bookForCreationDto);
+
+        var bookToReturn = await _booksService.AddBook(bookModel);
+
+        var uri = Url.Action(nameof(GetBookById), new { id = bookToReturn.Id });
+
+        return Created(uri, bookToReturn);
     }
 
     [HttpGet]
@@ -32,7 +48,7 @@ public class BooksController : ControllerBase
     {
         _mailService.Send("GetBooks", "Took the books!");
 
-        var books = await _booksRepository.GetBooks();
+        var books = await _booksService.GetBooks();
 
         if (!books.Any()) return NoContent();
         return Ok(_mapper.Map<List<BookDto>>(books));
@@ -42,7 +58,9 @@ public class BooksController : ControllerBase
     [ProducesResponseType(typeof(BookDto), StatusCodes.Status200OK)]
     public async Task<ActionResult<BookDto>> GetBookById(int id)
     {
-        var book = await _booksRepository.GetBookById(id.ToString());
+        _mailService.Send("GetBookById", "Took the specific book by Id!");
+
+        var book = await _booksService.GetBookById(id.ToString());
 
         if (book == null) return NoContent();
 
