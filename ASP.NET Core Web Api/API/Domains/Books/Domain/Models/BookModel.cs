@@ -6,20 +6,10 @@ public class BookModel
 
     public string Title { get; set; }
 
-    public ICollection<AuthorWithoutBooksModel> Authors { get; set; } = new List<AuthorWithoutBooksModel>();
+    public ICollection<string> AuthorsIds { get; set; } = new List<string>();
 
     public bool IsBookEbook()
     {
         return Id.Contains("EB");
-    }
-
-    public bool IsBookAvailable()
-    {
-        return !Title.Contains("Available");
-    }
-
-    public bool IsWrittenBySingeAuthor()
-    {
-        return Authors.Count > 1;
     }
 }
