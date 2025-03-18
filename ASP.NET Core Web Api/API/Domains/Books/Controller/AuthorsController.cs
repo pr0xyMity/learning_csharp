@@ -34,6 +34,17 @@ public class AuthorsController : ControllerBase
         return NoContent();
     }
 
+    // [HttpPost]
+    // [Route("/api/authors/{authorId}/books")]
+    // [ProducesResponseType(typeof(AuthorDto), StatusCodes.Status201Created)]
+    // public async Task<ActionResult<AuthorDto>> AddBooksToAuthor(AuthorForCreationDto authorForCreationDto)
+    // {
+    //     _mailService.Send("CreateAuthors", "You want to write huh?");
+    //     var authorToReturn = await _authorsRepository.AddAuthor(authorForCreationDto);
+    //     var uri = Url.Action(nameof(GetAuthorById), new { id = authorToReturn.Id });
+    //     return Created(uri, authorToReturn);
+    // }
+
     [HttpPost]
     [ProducesResponseType(typeof(AuthorDto), StatusCodes.Status201Created)]
     public async Task<ActionResult<AuthorDto>> CreateAuthor(AuthorForCreationDto authorForCreationDto)
