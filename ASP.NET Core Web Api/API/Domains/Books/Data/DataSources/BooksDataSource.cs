@@ -9,12 +9,17 @@ public interface IBooksDatasource
     /// <summary>
     ///     Get single book details with the book ID.
     /// </summary>
-    Task<BookModel?> GetBookById(string bookId);
+    Task<Book?> GetBookById(string bookId);
 
     /// <summary>
     ///     Get whole list of available books.
     /// </summary>
-    Task<List<BookModel>> GetBooks();
+    Task<List<Book>> GetBooks();
+
+    /// <summary>
+    ///     Create single book and return created book.
+    /// </summary>
+    Task<Book> AddBook(BookModel bookModel);
 }
 
 public class BooksDataSource : IBooksDatasource
@@ -26,20 +31,21 @@ public class BooksDataSource : IBooksDatasource
         _bookContext = bookContext ?? throw new ArgumentNullException(nameof(bookContext));
     }
 
-    public async Task<BookModel?> GetBookById(string bookId)
+    public async Task<List<Book>> GetBooks()
     {
-        return await _bookContext.Books.Where(book => book.Id == bookId)
-            .Select(book => new BookModel
+        return await _bookContext.Books
+            .Include(book => book.Authors)
+            .Select(book => new Book
             {
                 Id = book.Id,
                 Title = book.Title,
-                Authors = book.Authors.Select(author => new AuthorWithoutBooksModel
+                Authors = book.Authors.Select(author => new Author
                 {
                     Id = author.Id,
                     Name = author.Name
                 }).ToList()
             })
-            .FirstOrDefaultAsync();
+            .ToListAsync();
     }
 
     public async Task<Book> AddBook(BookModel bookModel)
@@ -64,12 +70,12 @@ public class BooksDataSource : IBooksDatasource
             {
                 Id = book.Id,
                 Title = book.Title,
-                Authors = book.Authors.Select(author => new AuthorWithoutBooksModel
+                Authors = book.Authors.Select(author => new Author
                 {
                     Id = author.Id,
                     Name = author.Name
                 }).ToList()
             })
-            .ToListAsync();
+            .FirstOrDefaultAsync();
     }
 }
