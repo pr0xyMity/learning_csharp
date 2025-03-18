@@ -42,11 +42,25 @@ public class BooksDataSource : IBooksDatasource
             .FirstOrDefaultAsync();
     }
 
-    public async Task<List<BookModel>> GetBooks()
+    public async Task<Book> AddBook(BookModel bookModel)
     {
-        return await _bookContext.Books
-            .Include(book => book.Authors)
-            .Select(book => new BookModel
+        var entity = new Book
+        {
+            Title = bookModel.Title,
+            Authors = await _bookContext.Authors
+                .Where(a => bookModel.AuthorsIds.Contains(a.Id))
+                .ToListAsync()
+        };
+
+        _bookContext.Books.Add(entity);
+        await _bookContext.SaveChangesAsync();
+        return entity;
+    }
+
+    public async Task<Book?> GetBookById(string bookId)
+    {
+        return await _bookContext.Books.Where(book => book.Id == bookId)
+            .Select(book => new Book
             {
                 Id = book.Id,
                 Title = book.Title,
