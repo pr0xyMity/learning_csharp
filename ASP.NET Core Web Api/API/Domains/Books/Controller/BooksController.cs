@@ -6,6 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Domains.Books.Controller;
 
+// The Controller is responsible for
+// Handling: HTTP and Input Validation
+// KeyObjects: Dto (Data Transfer Object)
+// Mapping: Dto => Model
+
 [ApiController]
 [Route("api/books")]
 public class BooksController : ControllerBase
