@@ -30,6 +30,11 @@ public interface IAuthorsDatasource
     ///     Get whole list of available authors without book IDs.
     /// </summary>
     Task<List<AuthorModel>> GetAuthorsWithoutBooks();
+
+    /// <summary>
+    ///     Get authors that match the given AuthorIds list.
+    /// </summary>
+    Task<List<Author>> GetAuthorsByIds(List<string> authorsIds);
 }
 
 public class AuthorsDataSource : IAuthorsDatasource
@@ -108,5 +113,11 @@ public class AuthorsDataSource : IAuthorsDatasource
 
         // Return the added entity
         return entity;
+    }
+
+    public async Task<List<Author>> GetAuthorsByIds(List<string> authorsIds)
+    {
+        return await _bookContext.Authors.Where(a => authorsIds.Contains(a.Id))
+            .ToListAsync();
     }
 }
