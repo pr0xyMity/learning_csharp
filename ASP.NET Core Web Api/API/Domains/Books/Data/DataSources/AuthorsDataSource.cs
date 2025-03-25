@@ -12,6 +12,11 @@ public interface IAuthorsDatasource
     Task<Author?> AddAuthor(Author entity);
 
     /// <summary>
+    ///     Update single author and return updated author.
+    /// </summary>
+    Task<Author?> UpdateAuthor(Author entity);
+
+    /// <summary>
     ///     Create single author and return created author.
     /// </summary>
     Task RemoveAuthor(string authorId);
@@ -44,6 +49,11 @@ public class AuthorsDataSource : IAuthorsDatasource
     public AuthorsDataSource(BookContext bookContext)
     {
         _bookContext = bookContext ?? throw new ArgumentNullException(nameof(bookContext));
+    }
+
+    public Task<Author?> UpdateAuthor(Author entity)
+    {
+        throw new NotImplementedException();
     }
 
     public async Task RemoveAuthor(string authorId)
