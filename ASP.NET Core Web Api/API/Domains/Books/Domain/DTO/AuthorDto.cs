@@ -1,9 +1,10 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace API.Domains.Books.Domain;
 
-public class AuthorDto
+public class AuthorDto : AuthorForManipulationDto
 {
-    public required string Id { get; set; }
-    public required string Name { get; set; }
-    public string? Email { get; set; }
+    [Required] public required string Id { get; set; }
+
     public ICollection<BookWithoutAuthorsDto> Books { get; set; }
 }

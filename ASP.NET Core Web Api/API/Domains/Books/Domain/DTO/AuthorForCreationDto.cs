@@ -1,7 +1,5 @@
 namespace API.Domains.Books.Domain;
 
-public class AuthorForCreationDto
+public class AuthorForCreationDto : AuthorForManipulationDto
 {
-    public required string Name { get; set; }
-    public string? Email { get; set; }
 }
