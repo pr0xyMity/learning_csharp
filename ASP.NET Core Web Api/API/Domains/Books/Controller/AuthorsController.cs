@@ -45,6 +45,20 @@ public class AuthorsController : ControllerBase
     //     return Created(uri, authorToReturn);
     // }
 
+    [HttpPut("{authorId}")]
+    [ProducesResponseType(typeof(AuthorDto), StatusCodes.Status200OK)]
+    public async Task<ActionResult> UpdateAuthor(string authorId, AuthorForUpdateDto authorForUpdateDto)
+    {
+        // Create a full update entity for the Author Entity.
+
+        _mailService.Send("Update the whole entity", "Lets revisit this and change, huh?");
+
+        var authorToReturn = await _authorsRepository.UpdateAuthor(authorForUpdateDto);
+
+        return Ok(_mapper.Map<AuthorDto>(authorToReturn));
+    }
+
+
     [HttpPost]
     [ProducesResponseType(typeof(AuthorDto), StatusCodes.Status201Created)]
     public async Task<ActionResult<AuthorDto>> CreateAuthor(AuthorForCreationDto authorForCreationDto)
