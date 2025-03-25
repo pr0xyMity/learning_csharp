@@ -5,6 +5,7 @@ namespace API.Domains.Books.Domain.Repositories;
 public interface IAuthorsRepository
 {
     Task<AuthorModel> AddAuthor(AuthorForCreationDto authorDto);
+    Task<AuthorModel> UpdateAuthor(AuthorForUpdateDto authorDto);
     Task RemoveAuthor(string authorId);
     Task<List<AuthorModel>> GetAuthors(bool includeBooks);
 

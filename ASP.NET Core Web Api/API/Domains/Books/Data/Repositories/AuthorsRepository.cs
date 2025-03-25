@@ -25,6 +25,13 @@ public class AuthorsRepository : IAuthorsRepository
         return _mapper.Map<AuthorModel>(createdAuthor);
     }
 
+    public async Task<AuthorModel> UpdateAuthor(AuthorForUpdateDto authorDto)
+    {
+        var author = _mapper.Map<Author>(authorDto);
+        var updatedAuthor = await _authorsDatasource.UpdateAuthor(author);
+        return _mapper.Map<AuthorModel>(updatedAuthor);
+    }
+
     public async Task RemoveAuthor(string authorId)
     {
         await _authorsDatasource.RemoveAuthor(authorId);
