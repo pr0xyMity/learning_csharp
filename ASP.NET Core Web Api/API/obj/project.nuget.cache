@@ -1,9 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "9lwRPe+Nkr4=",
+  "dgSpecHash": "klIJqP3ROxo=",
   "success": true,
   "projectFilePath": "/Users/konrad.barrek/Projects/learning_c#/ASP.NET Core Web Api/API/API.csproj",
   "expectedPackageFiles": [
+    "/Users/konrad.barrek/.nuget/packages/asp.versioning.abstractions/8.1.0/asp.versioning.abstractions.8.1.0.nupkg.sha512",
+    "/Users/konrad.barrek/.nuget/packages/asp.versioning.http/8.1.0/asp.versioning.http.8.1.0.nupkg.sha512",
+    "/Users/konrad.barrek/.nuget/packages/asp.versioning.mvc/8.1.0/asp.versioning.mvc.8.1.0.nupkg.sha512",
     "/Users/konrad.barrek/.nuget/packages/automapper/14.0.0/automapper.14.0.0.nupkg.sha512",
     "/Users/konrad.barrek/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/Users/konrad.barrek/.nuget/packages/microsoft.aspnetcore.openapi/9.0.1/microsoft.aspnetcore.openapi.9.0.1.nupkg.sha512",

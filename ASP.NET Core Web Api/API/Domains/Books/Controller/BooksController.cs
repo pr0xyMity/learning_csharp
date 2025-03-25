@@ -1,6 +1,7 @@
 using API.Domains.Books.Domain;
 using API.Domains.Books.Domain.Models;
 using API.Domains.Mail.Domain.Services;
+using Asp.Versioning;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,7 +13,9 @@ namespace API.Domains.Books.Controller;
 // Mapping: Dto => Model
 
 [ApiController]
-[Route("api/books")]
+[Route("api/v{version:apiVersion}/books")]
+[ApiVersion("1")]
+[ApiVersion("2")]
 public class BooksController : ControllerBase
 {
     private readonly IBooksService _booksService;

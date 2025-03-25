@@ -1,13 +1,16 @@
 using API.Domains.Books.Domain;
 using API.Domains.Books.Domain.Repositories;
 using API.Domains.Mail.Domain.Services;
+using Asp.Versioning;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Domains.Books.Controller;
 
 [ApiController]
-[Route("api/authors")]
+[Route("api/v{version:apiVersion}/authors")]
+[ApiVersion("1")]
+[ApiVersion("2")]
 public class AuthorsController : ControllerBase
 {
     private readonly IAuthorsRepository _authorsRepository;

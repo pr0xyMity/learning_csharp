@@ -5,6 +5,7 @@ using API.Domains.Books.Domain;
 using API.Domains.Books.Domain.Repositories;
 using API.Domains.Mail.Data;
 using API.Domains.Mail.Domain.Services;
+using Asp.Versioning;
 using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
@@ -29,6 +30,12 @@ builder.Services.AddScoped<IAuthorsDatasource, AuthorsDataSource>();
 builder.Services.AddScoped<IAuthorsRepository, AuthorsRepository>();
 builder.Services.AddProblemDetails();
 builder.Services.AddSwaggerGen();
+builder.Services.AddApiVersioning(setupAction =>
+{
+    setupAction.ReportApiVersions = true;
+    setupAction.AssumeDefaultVersionWhenUnspecified = true;
+    setupAction.DefaultApiVersion = new ApiVersion(1, 0);
+}).AddMvc();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 #if DEBUG
 builder.Services.AddTransient<IMailService, LocalMailService>();
