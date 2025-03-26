@@ -50,6 +50,7 @@ public class AuthenticationController : ControllerBase
         return Ok(tokenToReturn);
     }
 
+    [NonAction]
     public User? ValidateUserCredentials(string? username, string? password)
     {
         // This is just for simplicity
