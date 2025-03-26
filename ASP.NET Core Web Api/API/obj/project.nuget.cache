@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "QCogH76MNmc=",
+  "dgSpecHash": "fZyslE2g96w=",
   "success": true,
   "projectFilePath": "/Users/konrad.barrek/Projects/learning_c#/ASP.NET Core Web Api/API/API.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,7 @@
     "/Users/konrad.barrek/.nuget/packages/asp.versioning.mvc/8.1.0/asp.versioning.mvc.8.1.0.nupkg.sha512",
     "/Users/konrad.barrek/.nuget/packages/automapper/14.0.0/automapper.14.0.0.nupkg.sha512",
     "/Users/konrad.barrek/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
+    "/Users/konrad.barrek/.nuget/packages/microsoft.aspnetcore.authentication.jwtbearer/9.0.1/microsoft.aspnetcore.authentication.jwtbearer.9.0.1.nupkg.sha512",
     "/Users/konrad.barrek/.nuget/packages/microsoft.aspnetcore.openapi/9.0.1/microsoft.aspnetcore.openapi.9.0.1.nupkg.sha512",
     "/Users/konrad.barrek/.nuget/packages/microsoft.bcl.asyncinterfaces/7.0.0/microsoft.bcl.asyncinterfaces.7.0.0.nupkg.sha512",
     "/Users/konrad.barrek/.nuget/packages/microsoft.build.framework/17.8.3/microsoft.build.framework.17.8.3.nupkg.sha512",
@@ -45,6 +46,8 @@
     "/Users/konrad.barrek/.nuget/packages/microsoft.identitymodel.abstractions/8.7.0/microsoft.identitymodel.abstractions.8.7.0.nupkg.sha512",
     "/Users/konrad.barrek/.nuget/packages/microsoft.identitymodel.jsonwebtokens/8.7.0/microsoft.identitymodel.jsonwebtokens.8.7.0.nupkg.sha512",
     "/Users/konrad.barrek/.nuget/packages/microsoft.identitymodel.logging/8.7.0/microsoft.identitymodel.logging.8.7.0.nupkg.sha512",
+    "/Users/konrad.barrek/.nuget/packages/microsoft.identitymodel.protocols/8.0.1/microsoft.identitymodel.protocols.8.0.1.nupkg.sha512",
+    "/Users/konrad.barrek/.nuget/packages/microsoft.identitymodel.protocols.openidconnect/8.0.1/microsoft.identitymodel.protocols.openidconnect.8.0.1.nupkg.sha512",
     "/Users/konrad.barrek/.nuget/packages/microsoft.identitymodel.tokens/8.7.0/microsoft.identitymodel.tokens.8.7.0.nupkg.sha512",
     "/Users/konrad.barrek/.nuget/packages/microsoft.openapi/1.6.22/microsoft.openapi.1.6.22.nupkg.sha512",
     "/Users/konrad.barrek/.nuget/packages/mono.texttemplating/3.0.0/mono.texttemplating.3.0.0.nupkg.sha512",

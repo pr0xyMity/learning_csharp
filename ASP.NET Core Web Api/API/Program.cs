@@ -8,6 +8,7 @@ using API.Domains.Mail.Domain.Services;
 using Asp.Versioning;
 using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -30,6 +31,20 @@ builder.Services.AddScoped<IAuthorsDatasource, AuthorsDataSource>();
 builder.Services.AddScoped<IAuthorsRepository, AuthorsRepository>();
 builder.Services.AddProblemDetails();
 builder.Services.AddSwaggerGen();
+builder.Services.AddAuthentication("Bearer").AddJwtBearer(option =>
+{
+    option.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = builder.Configuration["Authentication:Issuer"],
+        ValidAudience = builder.Configuration["Authentication:Audience"],
+        IssuerSigningKey = new SymmetricSecurityKey(
+            Convert.FromBase64String(builder.Configuration["Authentication:Secret"])
+        )
+    };
+});
 builder.Services.AddApiVersioning(setupAction =>
 {
     setupAction.ReportApiVersions = true;
@@ -65,4 +80,6 @@ else
 
 app.UseHttpsRedirection();
 app.MapControllers();
+app.UseAuthentication();
+app.UseAuthorization();
 app.Run();
