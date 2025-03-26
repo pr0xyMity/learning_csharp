@@ -3,12 +3,14 @@ using API.Domains.Books.Domain.Repositories;
 using API.Domains.Mail.Domain.Services;
 using Asp.Versioning;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Domains.Books.Controller;
 
 [ApiController]
 [Route("api/v{version:apiVersion}/authors")]
+[Authorize]
 [ApiVersion("1")]
 [ApiVersion("2")]
 public class AuthorsController : ControllerBase

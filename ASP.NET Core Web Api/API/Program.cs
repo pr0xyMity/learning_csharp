@@ -9,6 +9,7 @@ using Asp.Versioning;
 using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -30,7 +31,30 @@ builder.Services.AddScoped<IBooksRepository, BooksRepository>();
 builder.Services.AddScoped<IAuthorsDatasource, AuthorsDataSource>();
 builder.Services.AddScoped<IAuthorsRepository, AuthorsRepository>();
 builder.Services.AddProblemDetails();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(setupAction =>
+{
+    setupAction.AddSecurityDefinition("BookStoreBearerAuth", new OpenApiSecurityScheme
+    {
+        Type = SecuritySchemeType.Http,
+        Scheme = "Bearer",
+        Description = "JWT Authorization header using the Bearer scheme."
+    });
+
+    setupAction.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "BookStoreBearerAuth"
+                }
+            },
+            new List<string>()
+        }
+    });
+});
 builder.Services.AddAuthentication("Bearer").AddJwtBearer(option =>
 {
     option.TokenValidationParameters = new TokenValidationParameters

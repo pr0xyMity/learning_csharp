@@ -3,6 +3,7 @@ using API.Domains.Books.Domain.Models;
 using API.Domains.Mail.Domain.Services;
 using Asp.Versioning;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Domains.Books.Controller;
@@ -14,6 +15,7 @@ namespace API.Domains.Books.Controller;
 
 [ApiController]
 [Route("api/v{version:apiVersion}/books")]
+[Authorize]
 [ApiVersion("1")]
 [ApiVersion("2")]
 public class BooksController : ControllerBase
