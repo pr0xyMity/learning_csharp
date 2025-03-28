@@ -1,5 +1,6 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using API.Domains.Authentication.Domain.Dto;
 using API.Domains.Authentication.Domain.Services;
 using API.Domains.Books;
 using Microsoft.IdentityModel.Tokens;
@@ -13,12 +14,6 @@ public class AuthenticationServices : IAuthenticationService
     public AuthenticationServices(IConfiguration configuration)
     {
         _configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
-    }
-
-    public User? ValidateUserCredentials(string? username, string? password)
-    {
-        // This is just for simplicity
-        return new User(1, "Tony", "Montana");
     }
 
     public string CreateToken(User user)
@@ -47,5 +42,32 @@ public class AuthenticationServices : IAuthenticationService
         var tokenToReturn = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken);
 
         return tokenToReturn;
+    }
+
+    public Task<User> CreateUser(RegisterRequestBodyDto registerRequestBodyDto)
+    {
+        throw new NotImplementedException();
+    }
+
+    public async Task<bool> EmailExists(string? email)
+    {
+        await Task.Delay(100);
+        return email != null && email.Contains("konrad");
+    }
+
+    public User? ValidateUserCredentials(AuthenticationRequestBodyDto authenticationRequestBodyDto)
+    {
+        if (
+            authenticationRequestBodyDto.Email == null ||
+            authenticationRequestBodyDto.Username == null ||
+            authenticationRequestBodyDto.Password == null
+        )
+            return null;
+
+        return new User
+        {
+            Email = authenticationRequestBodyDto.Email,
+            UserName = authenticationRequestBodyDto.Username
+        };
     }
 }
