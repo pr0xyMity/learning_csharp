@@ -16,20 +16,25 @@ public class AuthenticationController : ControllerBase
             authenticationService ?? throw new ArgumentNullException(nameof(authenticationService));
     }
 
-    // [HttpPost]
-    // public ActionResult<string> Register(RegisterRequestBodyDto registerRequestBodyDto)
-    // {
-    //     // Step 1. Validate dto
-    //
-    //     // Step 2. Check if user is created 
-    //     return Ok("Register");
-    // }
+    [HttpPost]
+    public async Task<ActionResult<string>> Register(RegisterRequestBodyDto registerRequestBodyDto)
+    {
+        // Step 1. Check if email is used 
+        var emailExists = await _authenticationService.EmailExists(registerRequestBodyDto.Email);
+
+        if (emailExists) return BadRequest("Email already exists");
+
+        var user = await _authenticationService.CreateUser(registerRequestBodyDto);
+
+        // Step 2. Check if user is created 
+        return Ok("Register");
+    }
 
     [HttpPost]
     public ActionResult<string> Authenticate(AuthenticationRequestBodyDto authenticationRequestBodyDto)
     {
-        var user = _authenticationService.ValidateUserCredentials(authenticationRequestBodyDto.Username,
-            authenticationRequestBodyDto.Password);
+        var user = _authenticationService.ValidateUserCredentials(
+            authenticationRequestBodyDto);
 
         if (user == null) return Unauthorized();
 
