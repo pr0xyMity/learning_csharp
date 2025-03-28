@@ -1,3 +1,5 @@
+using API.Domains.Authentication.Domain;
+using API.Domains.Authentication.Domain.Services;
 using API.Domains.Books.Data.DataSources;
 using API.Domains.Books.Data.Repositories;
 using API.Domains.Books.Data.Services;
@@ -26,6 +28,7 @@ builder.Services.AddDbContext<BookContext>(optionsBuilder =>
 builder.Services.AddOpenApi();
 builder.Services.AddSingleton<FileExtensionContentTypeProvider>();
 builder.Services.AddScoped<IBooksService, BooksService>();
+builder.Services.AddScoped<IAuthenticationService, AuthenticationServices>();
 builder.Services.AddScoped<IBooksDatasource, BooksDataSource>();
 builder.Services.AddScoped<IBooksRepository, BooksRepository>();
 builder.Services.AddScoped<IAuthorsDatasource, AuthorsDataSource>();
