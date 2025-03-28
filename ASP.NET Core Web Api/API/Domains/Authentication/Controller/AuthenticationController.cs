@@ -1,11 +1,14 @@
 using API.Domains.Authentication.Domain.Dto;
 using API.Domains.Authentication.Domain.Services;
+using Asp.Versioning;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Domains.Books;
 
 [ApiController]
-[Route("api/authentication")]
+[Route("api/v{version:apiVersion}/authentication")]
+[ApiVersion("1")]
+[ApiVersion("2")]
 public class AuthenticationController : ControllerBase
 {
     private readonly IAuthenticationService _authenticationService;
@@ -16,7 +19,9 @@ public class AuthenticationController : ControllerBase
             authenticationService ?? throw new ArgumentNullException(nameof(authenticationService));
     }
 
-    [HttpPost]
+    [HttpPost("register")]
+    [ProducesResponseType(StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult<string>> Register(RegisterRequestBodyDto registerRequestBodyDto)
     {
         // Step 1. Check if email is used 
@@ -30,8 +35,10 @@ public class AuthenticationController : ControllerBase
         return Ok("Register");
     }
 
-    [HttpPost]
-    public ActionResult<string> Authenticate(AuthenticationRequestBodyDto authenticationRequestBodyDto)
+    [HttpPost("login")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public ActionResult<string> Login(AuthenticationRequestBodyDto authenticationRequestBodyDto)
     {
         var user = _authenticationService.ValidateUserCredentials(
             authenticationRequestBodyDto);
