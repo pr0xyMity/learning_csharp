@@ -1,19 +1,21 @@
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace API.Domains.Books;
 
 public class User
 {
-    public User(
-        int userId,
-        string firstName,
-        string lastName
-    )
-    {
-        UserId = userId;
-        FirstName = firstName;
-        LastName = lastName;
-    }
-
+    [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int UserId { get; set; }
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
+
+    [Required] [EmailAddress] public string Email { get; set; }
+
+    [Required]
+    [MinLength(1)]
+    [MaxLength(64)]
+    public string UserName { get; set; }
+
+    public string? FirstName { get; set; }
+    public string? LastName { get; set; }
 }
